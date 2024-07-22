@@ -1,5 +1,6 @@
 from src.llm.models import question_router
 
+
 def route_question(state):
     """Route the question to either web search or RAG pipeline."""
     print("---ROUTE QUESTION---")
@@ -7,7 +8,11 @@ def route_question(state):
     source = question_router.invoke({"question": question})
     if source.datasource == 'web_search':
         print("---ROUTE QUESTION TO WEB SEARCH---")
-        return "web_search"
+        next_step = "web_search"
     elif source.datasource == 'vectorstore':
         print("---ROUTE QUESTION TO RAG---")
-        return "retrieve"
+        next_step = "retrieve"
+    else:
+        raise ValueError(f"Unknown datasource: {source.datasource}")
+
+    return {**state, "next": next_step}

@@ -1,6 +1,8 @@
 from pprint import pprint
 from src.graph.workflow import create_workflow
 from src.conversation.manager import ConversationManager
+from src.data.loader import load_documents
+from src.retriever.vectorstore import get_retriever
 
 if __name__ == "__main__":
     app = create_workflow()

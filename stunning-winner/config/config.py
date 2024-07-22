@@ -23,11 +23,12 @@ os.environ['LANGCHAIN_TRACING_V2'] = 'true'
 os.environ['LANGCHAIN_ENDPOINT'] = 'https://api.smith.langchain.com'
 
 # Data paths
-DATA_PATH = "./data/"
+# Data paths
+DATA_PATH = "data/"
 FILE_PATHS = [
-    DATA_PATH + "HDFC.txt",
-    DATA_PATH + "ICICI.txt",
-    DATA_PATH + "terms.txt",
+    os.path.join(DATA_PATH, "HDFC.txt"),
+    os.path.join(DATA_PATH, "ICICI.txt"),
+    os.path.join(DATA_PATH, "terms.txt"),
 ]
 
 # Vectorstore params
